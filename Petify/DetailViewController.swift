@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         guard let detailItem = detailItem else { return }
 
         let html = """
@@ -37,3 +37,4 @@ class DetailViewController: UIViewController {
         webView.loadHTMLString(html, baseURL: nil)
     }
 }
+

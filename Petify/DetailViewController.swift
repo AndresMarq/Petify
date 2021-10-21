@@ -28,8 +28,16 @@ class DetailViewController: UIViewController {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style> body { font-size: 150%; } </style>
         </head>
+        <style type="text/css">
+        <!--
+         .tab { margin-left: 20px; }
+         .tab { margin-right: 20px; }
+        -->
+        </style>
         <body>
+        <p class="tab", align = "justify">
         \(detailItem.body)
+        </p>
         </body>
         </html>
         """

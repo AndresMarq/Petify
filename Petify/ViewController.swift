@@ -33,7 +33,6 @@ class ViewController: UITableViewController {
                 self.showError()
             }
         }
-        
     }
     
     func parse(json: Data) {
@@ -71,11 +70,17 @@ class ViewController: UITableViewController {
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak self, weak ac] _ in
             guard let answer = ac?.textFields?[0].text else { return }
             if answer == "" {
-                self?.filteredItems = self?.petitions ?? []
+                DispatchQueue.global(qos: .background).async {
+                    self?.filteredItems = self?.petitions ?? []
+                }
             } else {
-                self?.filteredItems = self?.petitions.filter { $0.title.contains(answer) } ?? []
+                DispatchQueue.global(qos: .background).async {
+                    self?.filteredItems = self?.petitions.filter { $0.title.contains(answer) } ?? []
+                }
             }
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
         
         ac.addAction(submitAction)
